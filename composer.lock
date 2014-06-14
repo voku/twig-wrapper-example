@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d96103a4d99d5d332aed7fb7170b9104",
+    "hash": "2c965d0a7ebb53c7d5559530b1443f5f",
     "packages": [
         {
             "name": "twig/twig",
@@ -68,12 +68,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/twig-wrapper.git",
-                "reference": "aa8a947a6fad07f4a6c88a0495b62637154349dc"
+                "reference": "03d7c908be80845aab1c6a09d5f2e4d9bd9a03a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/twig-wrapper/zipball/aa8a947a6fad07f4a6c88a0495b62637154349dc",
-                "reference": "aa8a947a6fad07f4a6c88a0495b62637154349dc",
+                "url": "https://api.github.com/repos/voku/twig-wrapper/zipball/03d7c908be80845aab1c6a09d5f2e4d9bd9a03a8",
+                "reference": "03d7c908be80845aab1c6a09d5f2e4d9bd9a03a8",
                 "shasum": ""
             },
             "require": {
@@ -89,12 +89,12 @@
             "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
-                    "name": "Hamid Sarfraz",
-                    "homepage": "http://pageconfig.com/"
-                },
-                {
                     "name": "Lars Moelleken",
                     "homepage": "http://www.moelleken.org/"
+                },
+                {
+                    "name": "Paul Waring",
+                    "homepage": "http://www.pwaring.com/"
                 }
             ],
             "description": "Wrapper for Twig templating system",
@@ -105,7 +105,7 @@
                 "twig",
                 "wrapper"
             ],
-            "time": "2014-06-14 20:54:51"
+            "time": "2014-06-14 22:26:50"
         }
     ],
     "packages-dev": [

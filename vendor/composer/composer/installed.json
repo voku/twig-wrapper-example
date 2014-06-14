@@ -1,0 +1,108 @@
+[
+    {
+        "name": "twig/twig",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fabpot/Twig.git",
+            "reference": "1c0bec2814a078a81fb86dbc38798bf73418f839"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fabpot/Twig/zipball/1c0bec2814a078a81fb86dbc38798bf73418f839",
+            "reference": "1c0bec2814a078a81fb86dbc38798bf73418f839",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.4"
+        },
+        "time": "2014-05-26 15:15:28",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.16-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Twig_": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com",
+                "homepage": "http://fabien.potencier.org",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Armin Ronacher",
+                "email": "armin.ronacher@active-4.com",
+                "role": "Project Founder"
+            },
+            {
+                "name": "Twig Team",
+                "homepage": "https://github.com/fabpot/Twig/graphs/contributors",
+                "role": "Contributors"
+            }
+        ],
+        "description": "Twig, the flexible, fast, and secure template language for PHP",
+        "homepage": "http://twig.sensiolabs.org",
+        "keywords": [
+            "templating"
+        ]
+    },
+    {
+        "name": "voku/twig-wrapper",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/voku/twig-wrapper.git",
+            "reference": "03d7c908be80845aab1c6a09d5f2e4d9bd9a03a8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/voku/twig-wrapper/zipball/03d7c908be80845aab1c6a09d5f2e4d9bd9a03a8",
+            "reference": "03d7c908be80845aab1c6a09d5f2e4d9bd9a03a8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "twig/twig": "dev-master"
+        },
+        "time": "2014-06-14 22:26:50",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "voku": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Lars Moelleken",
+                "homepage": "http://www.moelleken.org/"
+            },
+            {
+                "name": "Paul Waring",
+                "homepage": "http://www.pwaring.com/"
+            }
+        ],
+        "description": "Wrapper for Twig templating system",
+        "homepage": "https://github.com/voku/twig-wrapper",
+        "keywords": [
+            "template",
+            "templating",
+            "twig",
+            "wrapper"
+        ]
+    }
+]
