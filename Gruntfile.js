@@ -28,7 +28,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   'use strict';
 
   // require it at the top and pass in the grunt instance
@@ -39,65 +39,15 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     meta: {
-      banner: '/*\n' +
-      ' * app <%= pkg.version %> by <%= pkg.author %> (<%= grunt.template.today("yyyy-mm-dd, HH:MM") %>)\n' +
+      banner: '<%= pkg.name %> by <%= pkg.author %> (<%= grunt.template.today("yyyy-mm-dd, HH:MM") %>)',
+      bannerJS:
+      '/*\n' +
+      ' * <%= meta.banner %>\n' +
       ' */'
     },
 
     clean: {
       build: ["js-min/*", "css/*", "css-min/*"]
-    },
-
-    uglify: {
-      js: {
-        options: {
-          banner: '<%= meta.banner %>\n',
-          sourceMap: true
-        },
-        files: [
-          {
-            expand: true,
-            cwd: 'js/',
-            src: '**/*.js',
-            dest: 'js-min/'
-          }
-        ]
-      }
-    },
-
-    jshint: {
-      options: {
-        "node": true,
-        "esnext": true,
-        "bitwise": true,
-        "curly": true,
-        "eqeqeq": true,
-        "immed": true,
-        "latedef": true,
-        "newcap": true,
-        "noarg": true,
-        "regexp": true,
-        "undef": false,
-        "unused": false,
-        "globals": {
-          "$": false,
-          "jquery": false,
-          "jQuery": false,
-          "Modernizr": false,
-          "console": false,
-          "require": false,
-          "process": false,
-          "__dirname": false,
-          "exports": false,
-          "angular": false,
-          "document": false,
-          "head": false,
-          "module": false,
-          "window": false,
-          "navigator": false
-        }
-      },
-      files: ['Gruntfile.js', 'js/*.js']
     },
 
     compass: {
@@ -109,66 +59,81 @@ module.exports = function (grunt) {
       }
     },
 
-    csscomb: {
-      dist: {
-        expand: true,
-        cwd: 'css/',
-        src: ['*.css'],
-        dest: 'css/',
-        ext: '.css'
-      }
-    },
-
-    cssmin: {
-      options: {
-        keepSpecialComments: 0,
-        banner: '<%= meta.banner %>\n'
+    concat: {
+      js: {
+        options: {
+          separator: ';\n\r',
+          sourceMap: true
+        },
+        src: [
+          'vendor/bower/bootstrap-sass/dist/js/bootstrap.js',
+          'vendor/bower/bootstrap-sass/docs-assets/js/holder.js',
+          'js/app.js'
+        ],
+        dest: 'js/app.pkgd.js'
       },
-      minify: {
-        expand: true,
-        cwd: 'css/',
-        src: ['*.css'],
-        dest: 'css-min/'
-      }
-    },
-
-    imagemin: {                          // Task
-      options: {
-        cache: false
-      },
-      dynamic: {                         // Another target
-        files: [
-          {
-            expand: true,                  // Enable dynamic expansion
-            cwd: 'images/',                // Src matches are relative to this path
-            src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
-            dest: 'images/'                // Destination path prefix
-          }
-        ]
-      }
-    },
-
-    dalek: {
-      options: {
-        // invoke phantomjs, chrome & chrome canary ...
-        browser: ['phantomjs'],
-        // generate an html & an jUnit report
-        reporter: ['html', 'junit']
-      },
-      dist: {
-        src: ['tests/dalek/*.js']
+      cssFonts: {
+        options: {
+          separator: '\n\r'
+        },
+        src: [
+          'vendor/bower/font-awesome/css/font-awesome.css'
+        ],
+        dest: 'scss/_fonts.scss'
       }
     },
 
     autoprefixer: {
       options: {
-        browsers: ['last 100 version']
+        browsers: ['last 100 version'],
+        map: true
       },
       multiple_files: {
         expand: true,
         flatten: true,
         src: 'css/*.css',
         dest: 'css/'
+      }
+    },
+
+    csswring: {
+      options: {
+        banner: '<%= meta.banner %>\n',
+        map: true,
+        preserveHacks: true
+      },
+      minify: {
+        expand: true,
+        flatten: true,
+        src: ['css/*.css'],
+        dest: 'css-min/'
+      }
+    },
+
+    uglify: {
+      js: {
+        options: {
+          banner: '<%= meta.bannerJS %>\n',
+          sourceMap: true
+        },
+        files: [{
+          expand: true,
+          cwd: 'js/',
+          src: '**/*.js',
+          dest: 'js-min/'
+        }]
+      }
+    },
+
+    dalek: {
+      options: {
+        // invoke phantomjs, chrome & chrome canary ...
+        browser: ['phantomjs', 'chrome', 'ie'],
+        // generate an html & an jUnit report
+        reporter: ['html', 'junit']
+      },
+      dist: {
+        src: ['tests/dalek/*.js']
       }
     },
 
@@ -183,18 +148,18 @@ module.exports = function (grunt) {
 
       js: {
         files: ['js/*.js'],
-        tasks: ['uglify:js', 'jshint'],
+        tasks: ['concat:js', 'uglify:js'],
         options: {
           livereload: true
         }
       },
 
       sass: {
-        files: ['scss/*.scss'],
-        tasks: ['compass:dist', 'autoprefixer', 'csscomb:dist', 'cssmin:minify'],
+        files: ['scss/**/*.scss'],
+        tasks: ['compass:dist', 'autoprefixer', 'csswring:minify'],
         options: {
           livereload: true,
-          spawn: false       // for grunt-contrib-watch v0.5.0+, "nospawn: true" for lower versions.
+          spawn : false       // for grunt-contrib-watch v0.5.0+, "nospawn: true" for lower versions.
         }
       }
 
@@ -208,15 +173,15 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['watch']);
 
   grunt.registerTask('clean-build', ['clean:build']);
-  grunt.registerTask('cssmin' ['cssmin:minify']);
-  grunt.registerTask('csscomb' ['csscomb:dist']);
+  grunt.registerTask('csswring' ['csswring:minify']);
   grunt.registerTask('image-min', ['imagemin:dynamic']);
   grunt.registerTask('test', ['dalek']);
 
   grunt.registerTask(
       'build',
       'Build this website ... yeaahhh!',
-      [ 'clean:build', 'uglify:js', 'jshint', 'compass:dist', 'autoprefixer', 'csscomb:dist', 'cssmin:minify' ]
+      [ 'clean:build', 'concat:js', 'uglify:js', 'concat:cssFonts', 'compass:dist', 'autoprefixer', 'csswring:minify']
   );
 
 };
+

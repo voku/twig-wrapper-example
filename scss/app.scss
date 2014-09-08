@@ -1,4 +1,4 @@
-// Global Foundation Settings
+// settings
 @import "app_settings";
 
 // bootstrap
@@ -10,6 +10,7 @@
 // rga-background
 @import "rgbapng";
 
-// no bootstrap
+// base-style
+@import "fonts";
 @import "base";
 @import "carousel";

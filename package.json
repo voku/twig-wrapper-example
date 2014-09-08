@@ -1,5 +1,6 @@
 {
   "name": "TwitterBootstrap_Twig",
+  "private": true,
   "version": "1.0.0",
   "author": "Lars Moelleken",
   "devDependencies": {
@@ -10,12 +11,12 @@
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-uglify": "latest",
-    "grunt-contrib-less": "latest",
     "grunt-contrib-compass": "latest",
     "grunt-contrib-cssmin": "latest",
     "grunt-contrib-clean": "latest",
     "grunt-contrib-imagemin": "latest",
     "grunt-csscomb": "latest",
+    "grunt-csswring": "latest",
     "grunt-autoprefixer": "latest",
     "dalekjs": "latest",
     "grunt-dalek": "latest",

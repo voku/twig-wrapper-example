@@ -35,7 +35,6 @@
 
     {# CSS #}
       {% block head_css %}
-        <link rel="stylesheet" href="vendor/bower/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" href="css/app.css">
       {% endblock %}
 
@@ -95,10 +94,7 @@
   {# JavaScript #}
   {% block footer_js %}
     {{ getHtmljQuery('vendor/bower/jquery/dist/jquery.min.js') | raw }}
-    <script src="vendor/bower/bootstrap-sass/dist/js/bootstrap.min.js"></script>
-    <!-- only for example-images -->
-    <script src="vendor/bower/bootstrap-sass/docs-assets/js/holder.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app.pkgd.js"></script>
   {% endblock %}
 
   </body>

@@ -38,9 +38,9 @@ $testTextArray['text'] = array(
 );
 
 $testTextArray['headline'] = array(
-  'Example headline',
-  'Example headline',
-  'Example headline',
+  'This is a test ... headline',
+  'This is a test ... headline',
+  'This is a test ... headline',
 );
 
 // ---------------------------------------------------------------------------------------
