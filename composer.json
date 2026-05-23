@@ -1,19 +1,107 @@
 {
-    "name": "twig-wrapper example",
-    "description": "example for : Wrapper for Twig templating system",
+    "name": "voku/twig-wrapper-example",
+    "description": "Modern 2026 demo for the Twig wrapper example",
+    "type": "project",
+    "license": "MIT",
     "config": {
-      "vendor-dir": "vendor/composer/",
-      "github-protocols": ["git", "https", "http"]
+        "vendor-dir": "vendor/composer",
+        "sort-packages": true,
+        "preferred-install": "dist"
     },
-    "require": {
-        "voku/twig-wrapper": "dev-master"
-    },
-    "authors": [
-      {
-        "name": "Lars Moelleken",
-        "homepage": "http://www.moelleken.org/"
-      }
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "symfony/polyfill-ctype",
+                "version": "v1.37.0",
+                "dist": {
+                    "url": "https://codeload.github.com/symfony/polyfill-ctype/zip/refs/tags/v1.37.0",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "files": [
+                        "bootstrap.php"
+                    ],
+                    "psr-4": {
+                        "Symfony\\Polyfill\\Ctype\\": ""
+                    }
+                },
+                "require": {
+                    "php": ">=7.2"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "symfony/deprecation-contracts",
+                "version": "v3.7.0",
+                "dist": {
+                    "url": "https://codeload.github.com/symfony/deprecation-contracts/zip/refs/tags/v3.7.0",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "files": [
+                        "function.php"
+                    ]
+                },
+                "require": {
+                    "php": ">=8.1"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "symfony/polyfill-mbstring",
+                "version": "v1.37.0",
+                "dist": {
+                    "url": "https://codeload.github.com/symfony/polyfill-mbstring/zip/refs/tags/v1.37.0",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "files": [
+                        "bootstrap.php"
+                    ],
+                    "psr-4": {
+                        "Symfony\\Polyfill\\Mbstring\\": ""
+                    }
+                },
+                "require": {
+                    "php": ">=7.2"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "twig/twig",
+                "version": "v3.26.0",
+                "dist": {
+                    "url": "https://codeload.github.com/twigphp/Twig/zip/refs/tags/v3.26.0",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Twig\\": "src/"
+                    }
+                },
+                "require": {
+                    "php": ">=8.2",
+                    "symfony/deprecation-contracts": "^2.5|^3",
+                    "symfony/polyfill-ctype": "^1.8",
+                    "symfony/polyfill-mbstring": "^1.3"
+                }
+            }
+        }
     ],
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    "require": {
+        "php": "^8.3",
+        "twig/twig": "^3.26"
+    },
+    "autoload": {
+        "psr-4": {
+            "voku\\twig\\": "src/voku/twig/"
+        }
+    }
 }

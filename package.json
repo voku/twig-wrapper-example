@@ -1,29 +1,36 @@
 {
-  "name": "TwitterBootstrap_Twig",
+  "name": "twig-wrapper-example",
   "private": true,
-  "version": "1.0.0",
-  "author": "Lars Moelleken",
+  "version": "2.0.0",
+  "description": "Modern asset pipeline for the Twig wrapper demo",
+  "engines": {
+    "node": ">=24",
+    "npm": ">=11"
+  },
+  "scripts": {
+    "clean": "rm -f css/app.css css/app.css.map css-min/app.css css-min/app.css.map js/app.pkgd.js js/app.pkgd.js.map js-min/app.pkgd.js js-min/app.pkgd.js.map",
+    "build:css:sass": "sass --quiet-deps --load-path=node_modules --style=expanded scss/app.scss css/app.css",
+    "build:css:prefix": "postcss css/app.css --use autoprefixer --replace",
+    "build:css:min": "cleancss -O2 --output css-min/app.css css/app.css",
+    "build:css": "npm-run-all build:css:sass build:css:prefix build:css:min",
+    "build:js:bundle": "cat node_modules/holderjs/holder.js node_modules/bootstrap/dist/js/bootstrap.bundle.js js/app.js > js/app.pkgd.js",
+    "build:js:min": "terser js/app.pkgd.js --compress --mangle --output js-min/app.pkgd.js",
+    "build:js": "npm-run-all build:js:bundle build:js:min",
+    "build": "npm-run-all clean build:css build:js"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead"
+  ],
   "devDependencies": {
-    "grunt": "latest",
-    "matchdep": "latest",
-    "time-grunt": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-concat": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-compass": "latest",
-    "grunt-contrib-cssmin": "latest",
-    "grunt-contrib-clean": "latest",
-    "grunt-contrib-imagemin": "latest",
-    "grunt-csscomb": "latest",
-    "grunt-csswring": "latest",
-    "grunt-autoprefixer": "latest",
-    "dalekjs": "latest",
-    "grunt-dalek": "latest",
-    "dalek-browser-chrome": "latest",
-    "dalek-browser-firefox": "latest",
-    "dalek-browser-ie": "latest",
-    "dalek-browser-ios": "latest",
-    "dalek-reporter-html": "latest"
+    "@popperjs/core": "2.11.8",
+    "autoprefixer": "10.5.0",
+    "bootstrap": "5.3.8",
+    "clean-css-cli": "5.6.3",
+    "holderjs": "2.9.9",
+    "npm-run-all": "4.1.5",
+    "postcss-cli": "11.0.1",
+    "sass": "1.100.0",
+    "terser": "5.48.0"
   }
 }

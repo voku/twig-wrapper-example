@@ -2,65 +2,81 @@
 
 {% block layout %}
   {% embed 'content_sidebar.twig' %}
-
     {% block content %}
-      {# Three columns of text below the carousel #}
-      <div class="row">
+      <section id="overview" class="mb-5">
+        <div class="row g-4 row-cols-1 row-cols-md-3">
+          {% for card in featureCards %}
+            <div class="col">
+              <article class="card h-100 border-0 shadow-sm surface-card text-center p-4">
+                <img class="rounded-circle mx-auto mb-4 shadow-sm" data-src="{{ card.placeholder }}" alt="{{ card.title }}">
+                <span class="badge text-bg-primary-subtle text-primary-emphasis align-self-center mb-3">{{ card.badge }}</span>
+                <h2 class="h4">{{ card.title }}</h2>
+                <p class="mb-0 text-secondary">{{ card.text }}</p>
+              </article>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
 
-        {% for headline in testTextArray['headline'] %}
-          <div class="col-lg-4">
-            <img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image">
-            <h2>{{ headline }}</h2>
-            <p>{{ testTextArray['text'][loop.index0] }}</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-          </div>
-        {% endfor %}
-
-      </div>
-
-      <ul id="testID">
-        <li class="testClass">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, ipsum.</li>
-        <li class="testClass">Provident ut eum quo impedit odit, quisquam qui voluptate quas!</li>
-        <li class="testClass">Et quidem explicabo optio repellat, consequatur, quod corporis quisquam error.</li>
-        <li class="testClass">Sequi tempore nemo eius cum, doloribus unde ut illum dolores.</li>
-        <li class="testClass">Qui molestiae, quasi quisquam consectetur, dolorem cum omnis enim tempora.</li>
-        <li class="testClass">Dolorem sit nulla placeat eum temporibus unde autem corporis distinctio.</li>
-        <li class="testClass">Recusandae non, facilis. Quidem ipsa distinctio consectetur, odit nulla, minus!</li>
-        <li class="testClass">In quisquam numquam sequi aliquid, tempore at minus magni tempora.</li>
-        <li class="testClass">Voluptatibus sit modi officiis iusto architecto ducimus facere harum facilis.</li>
-        <li class="testClass">Nihil voluptatum reprehenderit expedita saepe deleniti nesciunt officiis quasi distinctio!</li>
-      </ul>
-
-      {# START THE FEATURETTES #}
-      <hr class="featurette-divider">
-
-      {% for headline in testTextArray['headline'] %}
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">{{ headline }}</span></h2>
-            <p class="lead">{{ testTextArray['text'][loop.index0] }}</p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
+      <section id="highlights" class="mb-5">
+        <div class="section-heading mb-4">
+          <p class="eyebrow text-uppercase fw-semibold mb-2">Highlights</p>
+          <h2 class="display-6 fw-bold">What makes the refreshed demo feel current?</h2>
         </div>
 
-        <hr class="featurette-divider">
-      {% endfor %}
-      {# /END THE FEATURETTES #}
+        {% for highlight in releaseHighlights %}
+          <article class="featurette row align-items-center g-4 {% if not loop.last %}mb-4 pb-4 border-bottom border-white border-opacity-10{% endif %}">
+            <div class="col-md-8">
+              <h3 class="h4 mb-3">{{ highlight.title }}</h3>
+              <p class="lead text-secondary mb-0">{{ highlight.text }}</p>
+            </div>
+            <div class="col-md-4">
+              <img class="img-fluid rounded-4 shadow-sm" data-src="holder.js/640x420/auto/#111827:#cbd5e1/text:{{ highlight.title|replace({' ': '+'}) }}" alt="{{ highlight.title }}">
+            </div>
+          </article>
+        {% endfor %}
+      </section>
 
+      <section id="workflow">
+        <div class="section-heading mb-4">
+          <p class="eyebrow text-uppercase fw-semibold mb-2">Workflow</p>
+          <h2 class="display-6 fw-bold">Three quick steps to run the example locally.</h2>
+        </div>
+        <div class="row g-4 row-cols-1 row-cols-md-3">
+          {% for step in workflowSteps %}
+            <div class="col">
+              <article class="card h-100 surface-card border-0 shadow-sm p-4">
+                <div class="step-index mb-3">0{{ loop.index }}</div>
+                <h3 class="h5">{{ step.title }}</h3>
+                <p class="mb-0 text-secondary">{{ step.text }}</p>
+              </article>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
     {% endblock %}
-
 
     {% block sidebar %}
-      <div class="row">
-          <div class="col-lg-12">
-            <img class="img" data-src="holder.js/100x100" alt="Generic placeholder image">
-            <h2>by Lars Moelleken</h2>
-            <p><a href="http://moelleken.org">moelleken.org</a></p>
-          </div>
+      <div class="card surface-card border-0 shadow-sm p-4 mb-4">
+        <p class="eyebrow text-uppercase fw-semibold mb-2">Demo status</p>
+        <h2 class="h4">Ready for 2026</h2>
+        <p class="text-secondary">This repository now demonstrates the original wrapper-style API on top of maintained PHP and frontend tooling.</p>
+        <div class="d-grid gap-2">
+          <a class="btn btn-primary" href="https://github.com/voku/twig-wrapper-example">View repository</a>
+          <a class="btn btn-outline-light" href="https://github.com/voku/twig-wrapper">Original wrapper</a>
+        </div>
+      </div>
+
+      <div class="card surface-card border-0 shadow-sm p-4">
+        <p class="eyebrow text-uppercase fw-semibold mb-3">Useful links</p>
+        <ul class="list-group list-group-flush">
+          {% for link in sidebarLinks %}
+            <li class="list-group-item px-0 surface-card border-white border-opacity-10">
+              <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ link.href }}" target="_blank" rel="noreferrer">{{ link.label }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     {% endblock %}
-
   {% endembed %}
 {% endblock %}

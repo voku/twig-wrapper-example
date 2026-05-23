@@ -1,18 +1,46 @@
-
-footer {
-  clear: both;
+body {
+  background:
+    radial-gradient(circle at top, rgba(124, 58, 237, 0.3), transparent 30%),
+    linear-gradient(180deg, #020617 0%, #0f172a 100%);
+  min-height: 100vh;
 }
 
+.backdrop-blur {
+  backdrop-filter: blur(18px);
+}
 
-.carousel-caption {
-  h1 {
-    @include rgba-background-inline(rgba(127,64,0,0.85));
-    @include border-radius(5px);
-    @include transition(all 1s);
+.surface-card {
+  background: rgba(15, 23, 42, 0.76);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
 
-    &:hover {
-      @include rgba-background-inline(rgba(127,32,0,0.75));
-      @include border-radius(15px);
-    }
+.eyebrow {
+  letter-spacing: 0.14em;
+  color: rgba(192, 132, 252, 0.92);
+}
+
+.section-heading {
+  max-width: 42rem;
+}
+
+.step-index {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(192, 132, 252, 0.85);
+}
+
+.list-group-item {
+  background: transparent;
+}
+
+.sidebar {
+  position: sticky;
+  top: 6rem;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    position: static;
   }
 }

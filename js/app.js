@@ -1,2 +1,5 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.Holder) {
+    window.Holder.run();
+  }
 });

@@ -1,16 +1,26 @@
-// settings
-@import "app_settings";
-
-// bootstrap
-@import "bootstrap";
-
-// compass
-@import "compass/css3";
-
-// rga-background
-@import "rgbapng";
-
-// base-style
-@import "fonts";
-@import "base";
-@import "carousel";
+@use "app_settings" as *;
+@use "bootstrap/scss/bootstrap" with (
+  $primary: $primary,
+  $secondary: $secondary,
+  $success: $success,
+  $info: $info,
+  $warning: $warning,
+  $danger: $danger,
+  $light: $light,
+  $dark: $dark,
+  $body-bg: $body-bg,
+  $body-color: $body-color,
+  $body-secondary-color: $body-secondary-color,
+  $body-tertiary-bg: $body-tertiary-bg,
+  $card-bg: $card-bg,
+  $card-border-color: $card-border-color,
+  $navbar-dark-color: $navbar-dark-color,
+  $navbar-dark-hover-color: $navbar-dark-hover-color,
+  $navbar-dark-active-color: $navbar-dark-active-color,
+  $border-radius: $border-radius,
+  $border-radius-xl: $border-radius-xl,
+  $box-shadow: $box-shadow,
+  $enable-negative-margins: $enable-negative-margins
+);
+@use "base";
+@use "carousel";
